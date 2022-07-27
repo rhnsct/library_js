@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="objects.js"></script>
+    <script src="style.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Library</title>
+  </head>
+  <body>
+    <div>
+      <nav>
+        <h2><span>.</span>library</h2>
+        <button
+          id="Grid"
+          title="Change Lay-out"
+          onclick="changeLayout(this.id)"
+        >
+          Grid
+        </button>
+      </nav>
+    </div>
+    <div id="library-container" class="Grid">
+      <div id="table-info" class="book hidden">
+        <div>
+          <h3>Title</h3>
+          <h3>Pages</h3>
+          <h4>Author</h4>
+        </div>
+      </div>
+    </div>
+    <button
+      id="new-book"
+      title="Add new book"
+      onclick="showForm('form-container')"
+    >
+      + New Book
+    </button>
+    <div id="form-container" class="flex hidden">
+      <form id="newBookForm">
+        <button type="button" id="exit" onclick="showForm('form-container')">
+          x
+        </button>
+        <input id="titleInput" type="text" required />
+        <input
+          id="numPagesInput"
+          type="number"
+          max="10000"
+          oninput="numberInputLimit(this)"
+          pattern="[0-9]+"
+          maxlength="5"
+          required
+        />
+        <input id="authorInput" type="text" required />
+        <input type="submit" />
+      </form>
+    </div>
+  </body>
+  <script src="function.js"></script>
+</html>
