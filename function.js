@@ -75,13 +75,12 @@ async function getImgURL(title, author, bookID) {
   ).catch((err) => {
     alert(title + " image could not be found");
   });
-  if (response != undefined) {
-    await response.json().then((data) => {
-      let img = document.createElement("img");
-      img.src = data;
-      document.getElementById(bookID).appendChild(img);
-    });
-  }
+
+  await response.json().then((data) => {
+    let img = document.createElement("img");
+    img.src = data;
+    document.getElementById(bookID).appendChild(img);
+  });
 }
 
 function titleCase(str) {
