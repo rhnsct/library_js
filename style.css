@@ -196,6 +196,15 @@ nav button:hover {
   padding: 0;
   border: none;
   background: none;
+  box-shadow: none;
+  border-bottom: 1px solid black;
+}
+
+.Table .book:hover {
+  transform: none;
+}
+.Table .book img {
+  display: none;
 }
 
 .Table .book > div {
