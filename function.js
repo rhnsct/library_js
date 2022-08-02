@@ -40,6 +40,7 @@ function createBookTile(newBook) {
   let h3Title = document.createElement("h3");
   let h3Pages = document.createElement("h3");
   let h4Author = document.createElement("h4");
+  let removeButton = document.createElement("button");
   getImgURL(title, author, bookID);
 
   div.id = bookID;
@@ -53,18 +54,22 @@ function createBookTile(newBook) {
   h3Pages.innerText = pageNum;
   h4Author.innerText = author;
 
+  removeButton.innerText = "Remove Book";
+
   divFront.appendChild(h3Title);
   divFront.appendChild(h3Pages);
   divFront.appendChild(h4Author);
+
+  divBack.appendChild(removeButton);
 
   div.appendChild(divInner);
   divInner.appendChild(divFront);
   divInner.appendChild(divBack);
 
   document.getElementById("library-container").appendChild(div);
-  document.getElementById(bookID).addEventListener("click", () => {
-    return bookID;
-  });
+  removeButton.onclick = function (event) {
+    returnID(this);
+  };
 }
 
 function formatForURL(string) {
@@ -135,3 +140,7 @@ function numberInputLimit(ele) {
 }
 
 newBookForm.addEventListener("submit", formSubmitEvent);
+
+function returnID(ident) {
+  library.removeBook(ident.parentNode.parentNode.parentNode.id);
+}
