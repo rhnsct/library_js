@@ -34,28 +34,49 @@ function createBookTile(newBook) {
   let bookID = newBook.id;
 
   let div = document.createElement("div");
-  let div2 = document.createElement("div");
+  let divInner = document.createElement("div");
+  let divFront = document.createElement("div");
+  let divBack = document.createElement("div");
   let h3Title = document.createElement("h3");
   let h3Pages = document.createElement("h3");
   let h4Author = document.createElement("h4");
+  let removeButton = document.createElement("button");
   getImgURL(title, author, bookID);
 
   div.id = bookID;
   div.className = "book";
+  div.classList.add("hidden");
+  divInner.className = "inner-book";
+  divFront.className = "front-book";
+  divFront.id = bookID + "front";
+  divBack.className = "back-book";
   h3Title.innerText = title;
   h3Pages.innerText = pageNum;
   h4Author.innerText = author;
 
-  div2.appendChild(h3Title);
-  div2.appendChild(h3Pages);
-  div2.appendChild(h4Author);
+  removeButton.innerText = "Remove Book";
 
-  div.appendChild(div2);
+  divFront.appendChild(h3Title);
+  divFront.appendChild(h3Pages);
+  divFront.appendChild(h4Author);
 
+  divBack.appendChild(removeButton);
+
+  div.appendChild(divInner);
+  divInner.appendChild(divFront);
+  divInner.appendChild(divBack);
+
+<<<<<<< HEAD
   document.getElementById("libraryContainer").appendChild(div);
   document.getElementById(bookID).addEventListener("click", () => {
     return bookID;
   });
+=======
+  document.getElementById("library-container").appendChild(div);
+  removeButton.onclick = function (event) {
+    returnID(this);
+  };
+>>>>>>> e2ab66b73e50158f7189e0f9d7afb72b04b7ac25
 }
 
 function formatForURL(string) {
@@ -79,7 +100,8 @@ async function getImgURL(title, author, bookID) {
   await response.json().then((data) => {
     let img = document.createElement("img");
     img.src = data;
-    document.getElementById(bookID).appendChild(img);
+    img.addEventListener("onload", showForm(bookID));
+    document.getElementById(bookID + "front").appendChild(img);
   });
 }
 
@@ -125,3 +147,7 @@ function numberInputLimit(ele) {
 }
 
 newBookForm.addEventListener("submit", formSubmitEvent);
+
+function returnID(ident) {
+  library.removeBook(ident.parentNode.parentNode.parentNode.id);
+}
