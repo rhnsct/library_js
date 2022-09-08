@@ -15,7 +15,7 @@ function submitNewBook() {
   let book = createBook();
   if (library.addBook(book)) {
     createBookTile(book);
-    showForm("form-container");
+    showForm("newBookForm");
   } else {
     alert("This book already exists");
   }
@@ -52,7 +52,7 @@ function createBookTile(newBook) {
 
   div.appendChild(div2);
 
-  document.getElementById("library-container").appendChild(div);
+  document.getElementById("libraryContainer").appendChild(div);
   document.getElementById(bookID).addEventListener("click", () => {
     return bookID;
   });

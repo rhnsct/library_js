@@ -1,62 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="objects.js"></script>
-    <script src="style.js"></script>
-    <link rel="stylesheet" href="style.css" />
-    <title>Library</title>
-  </head>
-  <body>
-    <div>
-      <nav>
-        <h2><span>.</span>library</h2>
-        <button
-          id="Grid"
-          title="Change Lay-out"
-          onclick="changeLayout(this.id)"
-        >
-          Grid
-        </button>
-      </nav>
-    </div>
-    <div id="library-container" class="Grid">
-      <div id="table-info" class="book hidden">
-        <div>
-          <h3>Title</h3>
-          <h3>Pages</h3>
-          <h4>Author</h4>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="objects.js"></script>
+  <script src="style.js"></script>
+  <link rel="stylesheet" href="style/style.css" />
+  <title>Library</title>
+</head>
+
+<body class="flex column">
+
+  <nav class="flex row">
+    <h2 class="logo"><span>.</span>library</h2>
+    <button id="grid" title="Change Lay-out" onclick="changeLayout(this.id)">
+      Grid
+    </button>
+  </nav>
+
+  <div id="libraryContainer" class="grid">
+    <div id="tableInfo" class="book hidden">
+      <div>
+        <h3>Title</h3>
+        <h3>Pages</h3>
+        <h4>Author</h4>
       </div>
     </div>
-    <button
-      id="new-book"
-      title="Add new book"
-      onclick="showForm('form-container')"
-    >
-      + New Book
-    </button>
-    <div id="form-container" class="flex hidden">
-      <form id="newBookForm">
-        <button type="button" id="exit" onclick="showForm('form-container')">
-          x
-        </button>
-        <input id="titleInput" type="text" required />
-        <input
-          id="numPagesInput"
-          type="number"
-          max="10000"
-          oninput="numberInputLimit(this)"
-          pattern="[0-9]+"
-          maxlength="5"
-          required
-        />
-        <input id="authorInput" type="text" required />
-        <input type="submit" />
-      </form>
+  </div>
+
+  <button id="new-book" title="Add new book" onclick="showForm('newBookForm')">
+    + New Book
+  </button>
+
+
+  <form id="newBookForm" class="flex column hidden">
+
+    <div class="form-top flex row">
+      <h3>New Book</h3>
+      <button type="button" class="exit-button" onclick="showForm('newBookForm')">
+        <span>&#10006;</span>
+      </button>
     </div>
-  </body>
-  <script src="function.js"></script>
+    <div class="first-input flex column"><label for="titleInput" title="titleInput">Title</label>
+      <input id="titleInput" type="text" onfocus="whileFocused(this.parentElement)"
+        onfocusout="whileFocused(this.parentElement)" required />
+    </div>
+    <div class="flex column"><label for="authorInput">Author</label>
+      <input id="authorInput" type="text" onfocus="whileFocused(this.parentElement)"
+        onfocusout="whileFocused(this.parentElement)" required />
+    </div>
+    <div class="flex column"><label for="numPagesInput">Total Number of Pages</label>
+      <input id="numPagesInput" type="number" max="10000" oninput="numberInputLimit(this)" pattern="[0-9]+"
+        maxlength="5" onfocus="whileFocused(this.parentElement)" onfocusout="whileFocused(this.parentElement)"
+        required />
+    </div>
+    <div class="reading-options flex row">
+      <div class="flex row">
+        <label for="readCheck">Reading</label>
+        <input name="reading" type="radio" id="readCheck" checked onchange="showForm('readingPages', false)">
+      </div>
+      <div class="flex row">
+        <label for="finished">Finished</label>
+        <input type="radio" name="reading" id="finished" onchange="showForm('readingPages', false)">
+      </div>
+    </div>
+    <div id="readingPages" class="flex column">
+      <label for="pageNumber">Pages Read</label>
+      <input type="number" id="pageAt" onfocus="whileFocused(this.parentElement)"" onfocusout="
+        whileFocused(this.parentElement)">
+    </div>
+    <div class="cover-option flex row">
+      <label for="coverImage">Book Cover Image (optional)</label>
+      <input type="checkbox" id="coverImageCheck" checked onclick="showForm('urlDiv', false)">
+    </div>
+    <div class="url-input flex column" id="urlDiv">
+      <label for="urlInput" title="Input image url if you do not want an image to be chosen for you.">Image URL
+        (optional)</label>
+      <input type="url" name="URLinput" id="urlInput" placeholder="Automatically chosen if not filled">
+    </div>
+
+
+    <button type="submit" class="submit-button">Add Book</button>
+  </form>
+
+
+</body>
+<script src="function.js"></script>
+
 </html>

@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,500;0,600;0,700;1,400&family=Padauk&display=swap");
+@import "reset.css";
+@import "book.css";
+@import "book-form.css";
+
+:root {
+  --main-font-color: black;
+  --secondary-font-color: white;
+  --background-color: white;
+  --complimentary-color: black;
+  --hover-color: rgba(158, 158, 158, 0.267);
+  --accent-color: #f0c273;
+  --font-size-100: 1.125rem;
+  --font-size-400: 1.5rem;
+  --font-size-800: 2rem;
+}
+
+body {
+  font-size: var(--font-size-100);
+  font-family: "Ibarra Real Nova", "Padauk", sans-serif, serif;
+  color: var(--main-font-color);
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem 1rem;
+  align-items: center;
+  position: relative;
+}
+
+.grid {
+  display: grid;
+}
+
+.flex {
+  display: flex;
+}
+.column {
+  flex-direction: column;
+}
+.row {
+  flex-direction: row;
+}
+
+.hidden {
+  display: none;
+}
+
+nav {
+  width: clamp(0%, 100%, 1200px);
+  justify-content: space-between;
+}
+
+h2 {
+  font-size: var(--font-size-800);
+}
+
+.logo {
+  font-weight: 400;
+}
+
+.logo > span {
+  color: var(--accent-color);
+}

@@ -1,0 +1,93 @@
+form {
+  --form-width: clamp(250px, 100%, 400px);
+  --form-height: clamp(200px, 100%, 550px);
+
+  position: absolute;
+  width: var(--form-width);
+  height: var(--form-height);
+  background-color: var(--background-color);
+  border: 1px solid var(--complimentary-color);
+  justify-content: space-evenly;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2.5rem 2rem 1rem 2rem;
+}
+
+form input {
+  border: none;
+  border-bottom: 1px dashed var(--complimentary-color);
+  font-family: "Padauk", sans-serif;
+}
+
+form input::placeholder {
+  color: var(--hover-color);
+}
+
+.underline {
+  text-decoration: underline var(--accent-color) 2px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.form-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--complimentary-color);
+  padding-left: 2rem;
+  background-color: var(--accent-color);
+}
+
+.exit-button {
+  background: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  right: 0;
+  top: 0;
+  border: none;
+  border-left: 1px solid var(--complimentary-color);
+  cursor: pointer;
+}
+
+.exit-button:hover {
+  background-color: var(--hover-color);
+}
+
+.exit-button > span {
+  display: grid;
+  padding: 5% 0 0 4%;
+  line-height: 0;
+  text-align: center;
+}
+
+.first-input {
+  margin-top: 1rem;
+}
+
+.reading-options {
+  justify-content: space-between;
+}
+
+.reading-options input {
+  margin-left: 1rem;
+}
+
+.cover-option {
+  justify-content: space-between;
+}
+
+.submit-button {
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid var(--complimentary-color);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: var(--hover-color);
+}

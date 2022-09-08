@@ -1,10 +1,17 @@
 class Book {
-  constructor(title = "null", author = "null", numPages = 0, read = false) {
+  constructor(
+    title = "null",
+    author = "null",
+    numPages = 0,
+    read = false,
+    url = "none"
+  ) {
     this.title = title;
     this.author = author;
     this.numPages = numPages;
     this.read = read;
     this.id = this.createID();
+    this.url = url;
   }
 
   createID() {
@@ -34,7 +41,7 @@ class Library {
     }
   }
 
-  removeBook(identity = "6368656573656c6c6f6c6c616c61") {
+  removeBook(identity) {
     this.books = this.books.filter((book) => {
       return book.id !== identity;
     });
